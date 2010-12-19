@@ -2,9 +2,7 @@
 
 This is a sunday experiment hacing with the new Google Map Charts API (http://code.google.com/apis/chart/docs/gallery/new_map_charts.html) and Google Maps V3 (http://code.google.com/apis/maps/documentation/javascript/).
 
-Check out this example of the Number of World Heritage properties inscribed by each Country:
-
-http://vizzuality.s3.amazonaws.com/gmapcharts/whs_by_country.html 
+Check out [this example of the Number of World Heritage properties inscribed by each Country](http://vizzuality.s3.amazonaws.com/gmapcharts/whs_by_country.html )
 
 The introduction of the new Map Charts API allow to use the API as a Tile generator for Google Maps V3. That makes it a very powerful tool for thematic mapping on Google Maps V3. For example, traditionally it has been very difficult to highlight one country with precission in Google Maps. Most people used polygons to do so but did not work well because of performance. Using this technique this is a very easy and performing way of doing it.
 
@@ -21,11 +19,11 @@ The idea is to use the API as a ImageMapType in Google Maps v3 (or a TileLayerOv
 No!! You can use this technique in almost all mapping libraries out there. Essentially anything that supports overlaying tiles in 900913 projection (often call Google Projection, Web mercator,etc.). So from what I can say this could be used in:
 
 * Google Maps V2 and V3
-* OpenLayers http://openlayers.org/
-* Google Maps For Flash http://code.google.com/apis/maps/documentation/flash/
-* Bing Maps http://www.microsoft.com/maps/developers/web.aspx
-* Yahoo Maps http://developer.yahoo.com/maps/
-* OpenScales http://openscales.org/
+* [OpenLayers](http://openlayers.org/)
+* [Google Maps For Flash](http://code.google.com/apis/maps/documentation/flash/)
+* [Bing Maps](http://www.microsoft.com/maps/developers/web.aspx)
+* [Yahoo Maps](http://developer.yahoo.com/maps/)
+* [OpenScales](http://openscales.org/)
 
 If you want to have some examples on a specific platform let me know and I will try to provide them.
 
@@ -47,8 +45,7 @@ If this is ok with Google there is a lot of things that can be done. A full them
 
 ## Participate
 
-Send me an email jatorre@vizzuality.com in case you feel like contributing.
+Send me an email [jatorre@vizzuality.com](mailto:jatorre@vizzuality.com) in case you feel like contributing.
 
-Cheers.
-
-
+Javier
+[www.vizzuality.com](http://www.vizzuality.com)
