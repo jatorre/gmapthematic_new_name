@@ -1,6 +1,6 @@
-# Hightile
+# Map Charts Tiles
 
-This is a sunday experiment hacing with the new Google Map Charts API (http://code.google.com/apis/chart/docs/gallery/new_map_charts.html) and Google Maps V3 (http://code.google.com/apis/maps/documentation/javascript/).
+This is a sunday experiment hacking with the new Google Map Charts API (http://code.google.com/apis/chart/docs/gallery/new_map_charts.html) and Google Maps V3 (http://code.google.com/apis/maps/documentation/javascript/).
 
 Check out [this example of the Number of World Heritage properties inscribed by each Country](http://vizzuality.s3.amazonaws.com/gmapcharts/whs_by_country.html )
 
@@ -10,7 +10,8 @@ The introduction of the new Map Charts API allow to use the API as a Tile genera
 
 The new Map Charts API allows you to define the viewport of the map you are generating in lat/lon. For example here you have a map of the whole world: 
 
-http://chart.apis.google.com/chart?cht=map:fixed=-85,-180,85,180&chs=256x256&chld=HT&chco=B3BCC0|FF0000|000000&chf=bg,s,FFFFFF
+![Tile 0,0,0](http://chart.apis.google.com/chart?cht=map:fixed=-85,-180,85,180&chs=256x256&chld=HT&chco=B3BCC0|FF0000|000000&chf=bg,s,FFFFFF
+)
 
 The idea is to use the API as a ImageMapType in Google Maps v3 (or a TileLayerOverlay in Google Maps For Flash). To do so in the the getTileUrl we need to do a transformation from Tile X/Y/Z coordinates to Lat/Lon coordinates. This is an easy operation, with some math. Actually it looks very similar to an OGC Web Map Service. In some sense, I would say that Map Charts API is the first "kind of" WMS server that performs well (jatorre, 2010 :D ).
 
