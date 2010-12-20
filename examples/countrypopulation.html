@@ -1,0 +1,82 @@
+
+<!DOCTYPE html> 
+<html> 
+<head> 
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" /> 
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/> 
+<script src="http://earthalerts.manyjourneys.com/web/js/mercatorProjection.js" type="text/javascript"></script>
+<style type="text/css"> 
+  html { height: 100% }
+  body { height: 100%; margin: 0px; padding: 0px }
+  #map_canvas { height: 100%;width: 100% }
+</style> 
+<title>Using Google Map Charts in Google Maps: Last five olympic hosts</title> 
+<!--
+This is just a small test using the new Google Map Charts API inside Google Maps as a tile generator
+I am not sure this is a legal use of the API so I still have to ask in the mailing list.
+
+If it is possible this really opens a lot of fun and hackery :)
+
+If you have any question contact me:
+Javier de la Torre
+jatorre@vizzuality.com
+
+-->
+<script type="text/javascript"> 
+  var overlay; 
+  var map;
+  
+  function initialize() {       
+     var mapChartLayer = new google.maps.ImageMapType({
+       getTileUrl: function(coord, zoom) {
+         var lULP = new google.maps.Point(coord.x*256,(coord.y+1)*256);
+         var lLRP = new google.maps.Point((coord.x+1)*256,coord.y*256);     
+         var projectionMap = new MercatorProjection();
+         var lULg = projectionMap.fromDivPixelToLatLng(lULP, zoom);
+         var lLRg = projectionMap.fromDivPixelToLatLng(lLRP, zoom);         
+         
+         var countries = "AG|DZ|AZ|AL|AM|AO|AS|AR|AU|BH|BB|BM|BS|BD|BZ|BA|BO|MM|BJ|SB|BR|BG|BN|CA|KH|LK|CG|CD|BI|CN|AF|BT|CL|KY|CM|TD|KM|CO|CR|CF|CU|CV|CK|CY|DK|DJ|DM|DO|EC|EG|IE|GQ|EE|ER|SV|ET|AT|CZ|GF|FI|FJ|FK|FM|PF|FR|GM|GA|GE|GH|GD|GL|DE|GU|GR|GT|GN|GY|HT|HN|HR|HU|IS|IN|IR|IL|IT|CI|IQ|JP|JM|JO|KE|KG|KP|KI|KR|KW|KZ|LA|LB";
+         
+         var data ="83,32854,8352,3153,3017,16095,64,38747,20310,724,291,64,323,15328,275,3915,9182,47967,8490,472,186830,7744,373,32270,13955,19120,3609,58740,7858,1312978,25067,637,16295,45,17795,10145,797,4494,4327,4191,11259,506,13,836,5416,804,67,9469,13060,72849,4143,484,1344,4526,6668,78985,8291,10191,192,5246,828,2,110,255,60990,1617,1290,4473,2253,105,57,82652,16,11099,12709,9002,739,9296,683,455,10086,295,1134403,69420,6692,5864,18584,27995,127896,2682,5544,35598,5203,23615,92,47869,2,15210,566,401";
+         
+         var limits = "0,131297";
+         
+         
+                  var baseUrl="http://chart.apis.google.com/chart?chs=256x256&chd=t:"+data+"&chco=CCCCCC,FFFFB2,A7001A&chld="+countries+"&chf=bg,s,EAF7FE&chds="+limits;
+        
+         var bbox="&cht=map:fixed=" + lULg.lat() +","+ lULg.lng() + "," + lLRg.lat() + "," + lLRg.lng();
+         return baseUrl+bbox;
+       },
+       tileSize: new google.maps.Size(256, 256),
+       isPng: true,
+       maxZoom: 18,
+       name: "GMC",
+       alt: "Google Map Chart"
+     });    
+    
+    var myOptions = {
+      mapTypeControl: false,
+      streetViewControl: false,
+      zoom: 2,
+      center: new google.maps.LatLng(18.93205126204314, 10.6361083984375)
+    }
+    map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+    map.mapTypes.set('gmc', mapChartLayer);
+    map.setMapTypeId('gmc');
+
+  }
+  
+  function loadScript() {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "http://maps.google.com/maps/api/js?sensor=false&callback=initialize";
+    document.body.appendChild(script);
+  }
+  
+  window.onload = loadScript;
+</script> 
+</head> 
+<body> 
+  <div id="map_canvas"></div> 
+</body> 
+</html>
